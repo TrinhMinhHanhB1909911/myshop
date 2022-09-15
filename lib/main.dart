@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/ui/products/product_detail_screen.dart';
+import 'package:myshop/ui/products/product_overview_screen.dart';
 import 'package:myshop/ui/products/products_manager.dart';
 
 void main() {
@@ -17,16 +18,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Lato',
         colorScheme: ColorScheme.fromSwatch(
-          primaryColorDark: Colors.purple,
+          primarySwatch: Colors.purple,
         ).copyWith(
           secondary: Colors.deepOrange,
         ),
         primarySwatch: Colors.blue,
       ),
-      home: SafeArea(
-        child: ProductDetailScreen(
-          ProductsManager().items[0],
-        ),
+      home: const SafeArea(
+        child: ProductOverviewScreen(),
       ),
     );
   }

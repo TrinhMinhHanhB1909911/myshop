@@ -1,12 +1,11 @@
-import 'dart:convert';
 
 class Product {
-  String? id;
-  String title;
-  String description;
-  String price;
-  String imageUrl;
-  bool isFavorite;
+  final String? id;
+  final String title;
+  final String description;
+  final double price;
+  final String imageUrl;
+  final bool? isFavorite;
 
   Product({
     this.id,
@@ -14,14 +13,16 @@ class Product {
     required this.description,
     required this.price,
     required this.imageUrl,
-    required this.isFavorite,
+    this.isFavorite,
   });
+
+ 
 
   Product copyWith({
     String? id,
     String? title,
     String? description,
-    String? price,
+    double? price,
     String? imageUrl,
     bool? isFavorite,
   }) {
@@ -33,59 +34,5 @@ class Product {
       imageUrl: imageUrl ?? this.imageUrl,
       isFavorite: isFavorite ?? this.isFavorite,
     );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'title': title,
-      'description': description,
-      'price': price,
-      'imageUrl': imageUrl,
-      'isFavorite': isFavorite,
-    };
-  }
-
-  factory Product.fromMap(Map<String, dynamic> map) {
-    return Product(
-      id: map['id'],
-      title: map['title'] ?? '',
-      description: map['description'] ?? '',
-      price: map['price'] ?? '',
-      imageUrl: map['imageUrl'] ?? '',
-      isFavorite: map['isFavorite'] ?? false,
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory Product.fromJson(String source) => Product.fromMap(json.decode(source));
-
-  @override
-  String toString() {
-    return 'Product(id: $id, title: $title, description: $description, price: $price, imageUrl: $imageUrl, isFavorite: $isFavorite)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-  
-    return other is Product &&
-      other.id == id &&
-      other.title == title &&
-      other.description == description &&
-      other.price == price &&
-      other.imageUrl == imageUrl &&
-      other.isFavorite == isFavorite;
-  }
-
-  @override
-  int get hashCode {
-    return id.hashCode ^
-      title.hashCode ^
-      description.hashCode ^
-      price.hashCode ^
-      imageUrl.hashCode ^
-      isFavorite.hashCode;
   }
 }
