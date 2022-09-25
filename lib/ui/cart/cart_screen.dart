@@ -42,27 +42,29 @@ class CartScreen extends StatelessWidget {
       margin: const EdgeInsets.all(15),
       child: Padding(
         padding: const EdgeInsets.all(8),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          const Text('Total'),
-          const Spacer(),
-          Chip(
-            label: Text(
-              '\$${cart.totalAmount.toStringAsFixed(2)}',
-              style: TextStyle(
-                color: Theme.of(context).textTheme.headline6?.color,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text('Total'),
+            const Spacer(),
+            Chip(
+              label: Text(
+                '\$${cart.totalAmount.toStringAsFixed(2)}',
+                style: TextStyle(
+                  color: Theme.of(context).textTheme.headline6?.color,
+                ),
               ),
+              backgroundColor: Theme.of(context).primaryColor,
             ),
-            backgroundColor: Theme.of(context).primaryColor,
-          ),
-          TextButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-              textStyle: TextStyle(color: Theme.of(context).primaryColor),
+            TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                textStyle: TextStyle(color: Theme.of(context).primaryColor),
+              ),
+              child: const Text('ORDER NOW'),
             ),
-            child: const Text('ORDER NOW'),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }
