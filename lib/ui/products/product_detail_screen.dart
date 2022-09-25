@@ -4,6 +4,7 @@ import 'package:myshop/models/product.dart';
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen(this.product, {Key? key}) : super(key: key);
   final Product product;
+  static const String routeName = '/product-detail';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

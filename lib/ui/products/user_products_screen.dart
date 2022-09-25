@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/ui/products/products_manager.dart';
 import 'package:myshop/ui/products/user_product_list_tile.dart';
+import 'package:myshop/ui/shared/app_drawer.dart';
 
 class UserProductScreen extends StatelessWidget {
   const UserProductScreen({Key? key}) : super(key: key);
+
+  static const String routeName = '/user-products';
 
   @override
   Widget build(BuildContext context) {
     final productManager = ProductsManager();
     return Scaffold(
+      drawer: const AppDrawer(),
       appBar: AppBar(
         title: const Text('Your product'),
         actions: [
