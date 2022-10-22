@@ -4,6 +4,8 @@ import 'package:myshop/ui/products/user_product_list_tile.dart';
 import 'package:myshop/ui/shared/app_drawer.dart';
 import 'package:provider/provider.dart';
 
+import 'edit_product_screen.dart';
+
 class UserProductScreen extends StatelessWidget {
   const UserProductScreen({Key? key}) : super(key: key);
 
@@ -17,7 +19,7 @@ class UserProductScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Your product'),
         actions: [
-          buildAddButton(),
+          buildAddButton(context),
         ],
       ),
       body: RefreshIndicator(
@@ -45,10 +47,12 @@ class UserProductScreen extends StatelessWidget {
     );
   }
 
-  Widget buildAddButton() {
+  Widget buildAddButton(BuildContext context) {
     return IconButton(
       onPressed: () {
-        print('go to edit product screen');
+        Navigator.of(context).pushNamed(
+          EditProductScreen.routeName,
+        );
       },
       icon: const Icon(Icons.add),
     );
