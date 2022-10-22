@@ -30,14 +30,19 @@ class ProductGridTiel extends StatelessWidget {
   Widget buildGridFooterBar(BuildContext context) {
     return GridTileBar(
       backgroundColor: Colors.black87,
-      leading: IconButton(
-        onPressed: () {
-          print('Toggle a favorite product');
+      leading: ValueListenableBuilder<bool>(
+        valueListenable: product.isFavoriteListenable,
+        builder: (context, isFavorite, child) {
+          return IconButton(
+            onPressed: () {
+              product.isFavorite = !product.isFavorite;
+            },
+            color: Theme.of(context).colorScheme.secondary,
+            icon: Icon(
+              product.isFavorite ? Icons.favorite : Icons.favorite_border,
+            ),
+          );
         },
-        color: Theme.of(context).colorScheme.secondary,
-        icon: Icon(product.isFavorite ?? false
-            ? Icons.favorite
-            : Icons.favorite_border),
       ),
       title: Text(
         product.title,
