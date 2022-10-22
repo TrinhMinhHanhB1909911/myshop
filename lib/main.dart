@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'ui/screens.dart';
 
 void main() {
@@ -10,37 +11,42 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My shop',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Lato',
-        colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.purple,
-        ).copyWith(
-          secondary: Colors.deepOrange,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ProductsManager()),
+      ],
+      child: MaterialApp(
+        title: 'My shop',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: 'Lato',
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.purple,
+          ).copyWith(
+            secondary: Colors.deepOrange,
+          ),
+          primarySwatch: Colors.blue,
         ),
-        primarySwatch: Colors.blue,
+        routes: {
+          CartScreen.routeName: (_) => const CartScreen(),
+          OrdersScreen.routeName: (_) => const OrdersScreen(),
+          UserProductScreen.routeName: (_) => const UserProductScreen(),
+        },
+        onGenerateRoute: (settings) {
+          if (settings.name == ProductDetailScreen.routeName) {
+            final productId = settings.arguments as String;
+            return MaterialPageRoute(
+              builder: (context) {
+                return ProductDetailScreen(
+                  ProductsManager().findById(productId),
+                );
+              },
+            );
+          }
+          return null;
+        },
+        home: const ProductOverviewScreen(),
       ),
-      routes: {
-        CartScreen.routeName: (_) => const CartScreen(),
-        OrdersScreen.routeName: (_) => const OrdersScreen(),
-        UserProductScreen.routeName: (_) => const UserProductScreen(),
-      },
-      onGenerateRoute: (settings) {
-        if (settings.name == ProductDetailScreen.routeName) {
-          final productId = settings.arguments as String;
-          return MaterialPageRoute(
-            builder: (context) {
-              return ProductDetailScreen(
-                ProductsManager().findById(productId),
-              );
-            },
-          );
-        }
-        return null;
-      },
-      home: const ProductOverviewScreen(),
     );
   }
 }
