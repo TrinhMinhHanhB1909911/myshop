@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/ui/cart/cart_manager.dart';
+import 'package:provider/provider.dart';
 
 import 'cart_item_card.dart';
 
@@ -10,7 +11,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart = CartManager();
+    final cart = context.watch<CartManager>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your cart'),

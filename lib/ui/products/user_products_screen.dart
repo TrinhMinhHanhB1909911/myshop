@@ -29,20 +29,19 @@ class UserProductScreen extends StatelessWidget {
 
   Widget buildUserProductListView(ProductsManager productsManager) {
     return Consumer<ProductsManager>(
-      builder: (context, value, child) {
-        return child!;
+      builder: (context, productsManager, child) {
+        return ListView.builder(
+          itemCount: productsManager.itemCounts,
+          itemBuilder: (context, index) {
+            return Column(
+              children: [
+                UserProductListTile(productsManager.items[index]),
+                const Divider(),
+              ],
+            );
+          },
+        );
       },
-      child: ListView.builder(
-        itemCount: productsManager.itemCounts,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              UserProductListTile(productsManager.items[index]),
-              const Divider(),
-            ],
-          );
-        },
-      ),
     );
   }
 
