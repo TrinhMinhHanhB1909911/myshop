@@ -10,13 +10,13 @@ Future<bool?> showConfirmDialog(BuildContext context, String message) {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(true);
             },
             child: const Text('Yes'),
           ),
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(false);
             },
             child: const Text('No'),
           ),

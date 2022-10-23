@@ -17,7 +17,7 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.shop),
             title: const Text('Shop'),
-            onLongPress: () {
+            onTap: () {
               Navigator.of(context).pushReplacementNamed('/');
             },
           ),
@@ -25,7 +25,7 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.payment),
             title: const Text('Orders'),
-            onLongPress: () {
+            onTap: () {
               Navigator.of(context).pushReplacementNamed(OrdersScreen.routeName);
             },
           ),
@@ -33,7 +33,7 @@ class AppDrawer extends StatelessWidget {
            ListTile(
             leading: const Icon(Icons.edit),
             title: const Text('Manage Products'),
-            onLongPress: () {
+            onTap: () {
               Navigator.of(context).pushReplacementNamed(UserProductScreen.routeName);
             },
           ),
