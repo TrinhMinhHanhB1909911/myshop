@@ -87,9 +87,13 @@ class ProductsManager with ChangeNotifier {
     }
   }
 
-  void tonggleFavoriteStatus(Product product) {
+  Future<void> tonggleFavoriteStatus(Product product) async {
     bool savedStatus = product.isFavorite;
     product.isFavorite = !savedStatus;
+
+    if (!await _productService.saveFavoriteStatus(product)) {
+      product.isFavorite = savedStatus;
+    }
   }
 
   Future<void> deleteProduct(String id) async {
