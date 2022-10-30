@@ -235,6 +235,9 @@ class _EditProductScreenState extends State<EditProductScreen> {
       controller: _imageUrlController,
       focusNode: _imageUrlFocusNode,
       onFieldSubmitted: (value) => _saveForm(),
+      onChanged: (value) {
+        setState(() {});
+      },
       validator: (value) {
         if (value!.isEmpty) {
           return 'Please enter an image URL';

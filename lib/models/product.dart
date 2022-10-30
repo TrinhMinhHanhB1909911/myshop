@@ -43,4 +43,22 @@ class Product {
 
   ValueNotifier<bool> get isFavoriteListenable => _isFavorite;
 
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'title': title,
+      'description': description,
+      'price': price,
+      'imageUrl': imageUrl,
+    };
+  }
+
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+      price: json['price'],
+      imageUrl: json['imageUrl'],
+    );
+  }
 }
